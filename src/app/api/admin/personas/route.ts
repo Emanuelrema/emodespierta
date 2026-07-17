@@ -30,7 +30,8 @@ export async function POST(request: NextRequest) {
 
     const persona = await createPersona(name.trim());
     return Response.json(persona, { status: 201 });
-  } catch {
+  } catch (e) {
+    console.error("CREATE PERSONA ERROR:", e);
     return Response.json({ error: "Failed to create persona" }, { status: 500 });
   }
 }
