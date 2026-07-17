@@ -1,26 +1,441 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #04040c;
+  --foreground: #f3f4f6;
+  --card: #0a0b18;
+  --card-foreground: #f3f4f6;
+  --popover: #0a0b18;
+  --popover-foreground: #f3f4f6;
+  --primary: #ff003c; /* Spider Red */
+  --primary-foreground: #ffffff;
+  --secondary: #ffe600; /* Retro Yellow Accent */
+  --secondary-foreground: #04040c;
+  --muted: #0d0e26;
+  --muted-foreground: #9ca3af;
+  --accent: #8b5cf6; /* Spider-Verse Purple */
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #1d1e3d;
+  --input: #1d1e3d;
+  --ring: #ff003c;
+  --radius: 0px; /* Pixel-art layout looks better with crisp 90-degree corners */
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-lg: var(--radius);
+  --radius-md: var(--radius);
+  --radius-sm: var(--radius);
+
+  --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-heading), Courier, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    border-color: var(--border);
+    outline-color: var(--ring);
+  }
+  
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    image-rendering: pixelated;
+  }
+
+  /* Custom Pixelated Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #04040c;
+    border-left: 2px solid var(--border);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border: 2px solid #04040c;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Realistic textured paper sheet (Memory Album) */
+.paper-texture {
+  background-color: #fcfaf2;
+  color: #1c1917;
+  background-image: 
+    radial-gradient(#e7e3d4 15%, transparent 16%),
+    radial-gradient(#e7e3d4 15%, transparent 16%);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.5),
+    inset 0 0 40px rgba(231, 227, 212, 0.4);
+  position: relative;
 }
+
+.paper-texture::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3联%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* Subtle glow effects */
+.glow-spider {
+  box-shadow: 0 0 25px -5px rgba(255, 0, 60, 0.25);
+}
+
+.glow-spider-strong {
+  box-shadow: 0 0 40px 0px rgba(255, 0, 60, 0.45);
+}
+
+.glow-yellow {
+  box-shadow: 0 0 20px -5px rgba(255, 230, 0, 0.3);
+}
+
+/* Pixel art retro border styling */
+.pixel-border {
+  border: 4px solid #1d1e3d;
+  box-shadow: 
+    0 -4px #04040c, 
+    0 4px #04040c, 
+    -4px 0 #04040c, 
+    4px 0 #04040c,
+    inset 0 0 10px rgba(255, 0, 60, 0.15);
+}
+
+.pixel-border-hover:hover {
+  border-color: var(--primary);
+  box-shadow: 
+    0 -4px #04040c, 
+    0 4px #04040c, 
+    -4px 0 #04040c, 
+    4px 0 #04040c,
+    0 0 15px rgba(255, 0, 60, 0.35);
+}
+
+/* Glitch typography preview text animation */
+@keyframes textGlitch {
+  0% {
+    text-shadow: 2px 0 0 rgba(255,0,60,0.5), -2px 0 0 rgba(0,230,255,0.5);
+  }
+  50% {
+    text-shadow: -1px 0 0 rgba(255,0,60,0.5), 2px 0 0 rgba(0,230,255,0.5);
+  }
+  100% {
+    text-shadow: 1px 0 0 rgba(255,0,60,0.5), -1px 0 0 rgba(0,230,255,0.5);
+  }
+}
+
+.text-glitch:hover {
+  animation: textGlitch 0.3s infinite linear alternate-reverse;
+}
+
+/* Vinyl groove lines overlay */
+.vinyl-grooves {
+  background: repeating-radial-gradient(
+    circle,
+    #09090b,
+    #09090b 2px,
+    #18181b 3px,
+    #09090b 4px
+  );
+}
+
+/* =====================================================
+   MINIJUEGO — EmoDespierta Game Styles
+   ===================================================== */
+
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 1rem 1.5rem;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.game-header {
+  text-align: center;
+  user-select: none;
+}
+
+.game-subtitle {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.04em;
+}
+
+.game-subtitle strong {
+  color: #ffe600;
+}
+
+/* Canvas container — responsive 16:10 aspect box */
+.game-canvas-container {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  aspect-ratio: 16 / 10;
+  border: 2px solid rgba(139, 92, 246, 0.35);
+  background: #04040c;
+  box-shadow:
+    0 0 40px rgba(139, 92, 246, 0.15),
+    0 0 80px rgba(255, 0, 60, 0.06);
+  overflow: hidden;
+}
+
+/* Victory & Game Over overlays */
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 1.5rem;
+  pointer-events: none;
+}
+
+.game-overlay--victory {
+  align-items: flex-end;
+  background: linear-gradient(to top, rgba(4,4,12,0.85) 0%, transparent 50%);
+}
+
+.game-overlay--gameover {
+  align-items: center;
+  background: rgba(4,4,12,0.5);
+}
+
+/* Password form */
+.game-password-form {
+  pointer-events: all;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  animation: fadeSlideUp 0.4s ease-out both;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.game-overlay__label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.1em;
+}
+
+.game-password-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.game-password-input {
+  background: rgba(4, 4, 12, 0.9);
+  border: 2px solid rgba(139, 92, 246, 0.6);
+  color: #ffe600;
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  letter-spacing: 0.35em;
+  text-align: center;
+  padding: 0.4rem 1rem;
+  width: 160px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.game-password-input:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+}
+
+.game-password-input--error {
+  border-color: #ff003c !important;
+  animation: shake 0.35s ease-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+.game-password-btn {
+  background: #8b5cf6;
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  padding: 0.45rem 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.game-password-btn:hover {
+  background: #7c3aed;
+  transform: translateY(-1px);
+}
+
+.game-password-btn:active {
+  transform: translateY(0);
+}
+
+.game-password-error {
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  color: #ff003c;
+  letter-spacing: 0.04em;
+}
+
+/* Retry button */
+.game-retry-btn {
+  pointer-events: all;
+  background: rgba(4, 4, 12, 0.9);
+  border: 2px solid #ff003c;
+  color: #ff003c;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.game-retry-btn:hover {
+  background: rgba(255, 0, 60, 0.1);
+  transform: translateY(-1px);
+}
+
+/* ── Mobile Controls (platformer layout) ───────────────────────────
+   Visible only on mobile (<640px).
+   Layout:  [←] [→]          [JUMP]
+   Left section: movement    Right section: jump
+──────────────────────────────────────────────────────────────────── */
+.game-controls {
+  display: none; /* hidden by default — shown on mobile below */
+  width: 100%;
+  max-width: 760px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@media (max-width: 639px) {
+  .game-controls {
+    display: flex;
+  }
+}
+
+.game-controls__move {
+  display: flex;
+  gap: 6px;
+}
+
+.game-controls__action {
+  display: flex;
+}
+
+/* Base button */
+.game-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4, 4, 12, 0.85);
+  border: 2px solid rgba(139, 92, 246, 0.45);
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+  transition: background 0.08s, border-color 0.08s;
+}
+
+.game-btn:active {
+  background: rgba(139, 92, 246, 0.25);
+  border-color: rgba(139, 92, 246, 0.9);
+  color: #ffffff;
+}
+
+/* Movement buttons (←  →) */
+.game-btn--move {
+  width: 56px;
+  height: 56px;
+  font-size: 1.3rem;
+  border-radius: 0;
+}
+
+/* Jump button — larger, distinct color */
+.game-btn--jump {
+  width: 72px;
+  height: 72px;
+  font-size: 1.6rem;
+  border-color: rgba(255, 230, 0, 0.5);
+  color: #ffe600;
+  box-shadow: 0 0 16px rgba(255, 230, 0, 0.1);
+}
+
+.game-btn--jump:active {
+  background: rgba(255, 230, 0, 0.15);
+  border-color: #ffe600;
+  color: #ffe600;
+  box-shadow: 0 0 24px rgba(255, 230, 0, 0.3);
+}
+
+/* Responsive canvas — ensure it never overflows on mobile */
+@media (max-width: 480px) {
+  .game-canvas-container {
+    border-width: 1px;
+  }
+
+  .game-wrapper {
+    padding: 1rem 0.5rem 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .game-subtitle {
+    font-size: 0.7rem;
+  }
+}
+

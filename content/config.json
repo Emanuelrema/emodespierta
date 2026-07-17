@@ -1,0 +1,31 @@
+{
+  "birthday": {
+    "name": "Emily",
+    "date": "2026-07-17T00:00:00",
+    "mainText": "Feliz Cumpleaños",
+    "subtitle": "Esperamos que disfrutes este pequeño regalo hecho con mucho cariño.",
+    "cakeImageUrl": "",
+    "mainSongUrl": "",
+    "mainSongTitle": ""
+  },
+  "fireworks": {
+    "enabled": true,
+    "colors": ["#ff003c", "#8b5cf6", "#ffe600", "#ffffff", "#3b82f6"]
+  },
+  "branding": {
+    "logo": "🕷️💌",
+    "siteName": "EmoDespierta",
+    "palette": {
+      "primary": "#ff003c",
+      "accent": "#8b5cf6",
+      "background": "#04040c"
+    },
+    "fontHeading": "Pixelify Sans",
+    "fontBody": "Poppins"
+  },
+  "sounds": {
+    "clickEnabled": true,
+    "hoverEnabled": true,
+    "ambientEnabled": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "elena",
+  "name": "Elena",
+  "status": "complete",
+  "createdAt": "2026-07-16T00:00:00Z",
+  "order": 2,
+  "modules": ["letter", "video"]
+}
