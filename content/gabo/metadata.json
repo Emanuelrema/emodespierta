@@ -1,0 +1,11 @@
+{
+  "id": "gabo",
+  "name": "Gabo",
+  "status": "complete",
+  "createdAt": "2026-07-17T04:55:08.923Z",
+  "order": 12,
+  "modules": [
+    "letter",
+    "audio"
+  ]
+}

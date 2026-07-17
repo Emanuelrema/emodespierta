@@ -1,0 +1,14 @@
+{
+  "id": "emanuel",
+  "name": "Emanuel",
+  "status": "complete",
+  "createdAt": "2026-07-17T03:33:42.349Z",
+  "order": 11,
+  "modules": [
+    "music",
+    "photos",
+    "video",
+    "audio",
+    "letter"
+  ]
+}

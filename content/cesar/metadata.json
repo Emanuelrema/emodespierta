@@ -1,0 +1,10 @@
+{
+  "id": "cesar",
+  "name": "Cesar",
+  "status": "complete",
+  "createdAt": "2026-07-17T05:32:42.048Z",
+  "order": 15,
+  "modules": [
+    "photos"
+  ]
+}

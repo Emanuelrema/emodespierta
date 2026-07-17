@@ -1,8 +1,12 @@
 {
   "id": "mateo",
   "name": "Mateo",
-  "status": "complete",
+  "status": "draft",
   "createdAt": "2026-07-16T00:00:00Z",
   "order": 1,
-  "modules": ["letter", "video", "photos"]
+  "modules": [
+    "letter",
+    "video",
+    "photos"
+  ]
 }

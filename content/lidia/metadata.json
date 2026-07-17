@@ -1,0 +1,11 @@
+{
+  "id": "lidia",
+  "name": "Lidia",
+  "status": "complete",
+  "createdAt": "2026-07-17T03:20:33.549Z",
+  "order": 6,
+  "modules": [
+    "letter",
+    "video"
+  ]
+}

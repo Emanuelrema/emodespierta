@@ -1,8 +1,12 @@
 {
   "id": "sofia",
   "name": "Sofía",
-  "status": "complete",
+  "status": "draft",
   "createdAt": "2026-07-16T00:00:00Z",
   "order": 0,
-  "modules": ["letter", "photos", "audio"]
+  "modules": [
+    "letter",
+    "photos",
+    "audio"
+  ]
 }
